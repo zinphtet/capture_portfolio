@@ -8,7 +8,7 @@ import { SectionWrapper } from '../globalStyle'
 import {pageAnimation}  from '../Animation'
 function About() {
   return (
-    <AboutStyle variants={pageAnimation} initial='hidden' animate ='show' exit='exit'>
+    <AboutStyle variants={pageAnimation} initial='hidden' animate ='show' exit='exit'  >
         <AboutUs/>
         <Services/>
         <Faq/>
@@ -20,7 +20,7 @@ function About() {
 export default About
 
 const AboutStyle =styled(SectionWrapper)`
-    height: 70vh;
+    /* height: 70vh; */
     width: 100%;
-    background-color: red;
+   
 `

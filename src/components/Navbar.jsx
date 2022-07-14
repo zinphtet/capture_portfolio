@@ -14,14 +14,14 @@ function Navbar() {
          <Brand>
            <Link to={'/'}> Capture</Link>
          </Brand>
-         <NavLinks>
-           <li><Link to='/'>1. About Us</Link>
-               <Line variants={navlineAnimation} initial='hidden' animate= {pathname==='/'?'show':''}></Line>
+         <NavLinks >
+           <li><Link to='/'>1.&nbsp;About Us</Link>
+               <Line variants={navlineAnimation} initial='hidden'  animate= {pathname==='/'?'show':''}></Line>
            </li>
-           <li><Link to='/work'>2. Our Work</Link>
+           <li><Link to='/work'>2.&nbsp;Our Work</Link>
            <Line variants={navlineAnimation} initial='hidden' animate= {pathname==='/work'?'show':''}></Line>
            </li>
-           <li><Link to='/contact'>3. Contact</Link>
+           <li><Link to='/contact'>3.&nbsp;Contact</Link>
            <Line variants={navlineAnimation} initial='hidden' animate= {pathname==='/contact'?'show':''}></Line>
            </li>
           </NavLinks>
@@ -34,16 +34,23 @@ function Navbar() {
 
 export default Navbar
 const NavbarStyle = styled.div`
+position: sticky;
+top: 0;
     background-color: #282828;
+    width: 100%;
+    z-index: 100;
 `
 const Nav = styled.div`
      width: 100%;
-     padding: 2rem 0rem;
+    padding: 1rem 0rem 1.5rem 0;
     display: flex;
     align-items: center;
     /* border: 1px solid red; */
-    height: 10vh;
- 
+    gap: 1rem;
+    /* height: 10vh; */
+   @media screen and (max-width : 37.5rem){
+    flex-direction: column;
+   }
     
 `
 const Brand  = styled.div`
@@ -52,15 +59,30 @@ const Brand  = styled.div`
         font-family: 'Lobster', sans-serif;
         font-size: 3rem;
         color: #fff;
+        @media screen and (max-width : 56.25rem){
+            color: red;
+      }
+      @media screen and (max-width : 37.5rem){
+            color: green;
+      }
+      @media screen and (max-width : 25rem){
+            color: blue;
+      }
     }
 `
-const NavLinks = styled.div`
+const NavLinks = styled(motion.div)`
     display: flex;
     justify-content: flex-end;
     flex: 1;
-    /* border: 1px solid blue; */
+    width: 100%;
+    @media screen and (max-width: 37.5rem) {
+          justify-content: space-around;
+	}
     li{
         margin: 0rem 2rem;
+        @media screen and (max-width: 37.5rem) {
+            margin: 0rem 1rem;
+	}
         a{
             font-size: 1.75rem;
             color: #fff;
@@ -71,6 +93,6 @@ const Line = styled(motion.div)`
     width:100%;
     height: .4rem ;
     background-color: #23d997;
-    margin-top: 1rem;
+    margin-top: .5rem;
     border-radius: .2rem;
 `
