@@ -8,6 +8,8 @@ import athleteOne from '../img/athlete-small.png'
 import athleteTwo from '../img/athlete2.png'
 import goodtimeOne from '../img/goodtimes-small.png'
 import goodtimeTwo from '../img/goodtime2.jpg'
+import { motion } from 'framer-motion'
+import { pageAnimation ,scrollUpAni} from '../Animation'
 // const 
 const data = {
     athlete : {
@@ -27,10 +29,10 @@ const data = {
 
 const WorkDetail = () => {
    const {workId} = useParams()
-   console.log(workId)
+  
    const {title , img } = data[workId];
   return (
-    <WorkDetailWrapper>
+    <WorkDetailWrapper variants={pageAnimation} initial='hidden' animate ='show' exit='exit'>
         <FirstDiv>
             <WorkTitle>
              {title}
@@ -39,7 +41,7 @@ const WorkDetail = () => {
             <IMG src={img[0]} alt="Racer Image" />
            </ImgContainer>
         </FirstDiv>
-      < WorkDetailss>
+      < WorkDetailss variants={scrollUpAni} initial='hidden' whileInView="show" viewport={{once:false,amount:.1}}>
            <WorkInfo>
               < WrokInfoTitle >
                 Truly A masterpiece
@@ -71,10 +73,8 @@ const WorkDetail = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, dolore dolor velit reprehenderit 
               </WorkInfoPara>
            </WorkInfo>
-
-         
       </ WorkDetailss>
-      <ImgContainer>
+      <ImgContainer variants={scrollUpAni} initial='hidden' whileInView="show" viewport={{once:false,amount:.1}}>
         <IMG src={img[1]} alt="racerTwo" />
       </ImgContainer>
     </WorkDetailWrapper>
@@ -86,7 +86,7 @@ const WorkInfo = styled.div`
      display:grid;
      grid-gap: 2rem;
 `
-const WorkDetailWrapper = styled.div`
+const WorkDetailWrapper = styled(motion.div)`
     /* display: grid;
     grid-gap: 10rem;
     padding: 6rem 0; */
@@ -97,18 +97,21 @@ const WorkDetailWrapper = styled.div`
 const FirstDiv = styled.div`
     display: grid;
     grid-gap: 2rem;
+    overflow-y:hidden;
 `
 const WorkTitle = styled.p`
     text-align: center;
     font-size: 2.5rem;
 `
-const ImgContainer = styled.div`
+const ImgContainer = styled(motion.div)`
     max-height: 90vh;
+    overflow:hidden;
 `
 const IMG = styled.img`
     width:100%;
     height : 100%;
     object-fit: cover;
+    overflow:hidden;
 `
 const WorkDetailss = styled(SectionWrapper)`
     display: grid;

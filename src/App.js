@@ -8,11 +8,13 @@ import Contact from './pages/Contact';
 import WorkDetail from './pages/WorkDetail';
 import { Routes, Route ,useLocation} from 'react-router-dom';
 import {  AnimatePresence } from "framer-motion"
+import ScrollTop from './components/ScrollTop';
 function App() {
 	const location= useLocation()
 	// console.log(location)
 	return (
 		<AppWrapper>
+			<ScrollTop/>
 			<Navbar />
 			<AnimatePresence exitBeforeEnter initial={false}>
 		 	 <Routes key={location.pathname} location={location}>

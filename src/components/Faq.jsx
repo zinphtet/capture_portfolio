@@ -1,64 +1,33 @@
 import React from 'react'
 import styled from 'styled-components'
 import { InfoTitle,GreenText } from '../globalStyle'
+import { scrollUpAni } from '../Animation'
+import {motion} from 'framer-motion'
+import { AnimateSharedLayout } from 'framer-motion'
+import FaqComponent from './FaqComponent'
+const questions = ['How do I start ?' , 'What products do you offer ?','Different Payment Methods ?','How long I will wait ?']
 function Faq() {
   return (
-    <FaqSection>
+    <FaqSection variants={scrollUpAni} initial='hidden' whileInView="show" viewport={{once:false,amount:.1}}>
         <InfoTitle>Any Questions ? <br/>  <GreenText>FAQ</GreenText> </InfoTitle>
-        <Questions>
-           <QuestionItem >
-              <Question>How do I start ?</Question>
-              <Answer>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, aspernatur unde explicabo quas quibusdam eos.</Answer>
-              <Line ></Line>
-           </QuestionItem>
-
-           <QuestionItem >
-              <Question>What products do you offer ?</Question>
-              <Answer>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, aspernatur unde explicabo quas quibusdam eos.</Answer>
-              <Line ></Line>
-           </QuestionItem>
-
-           <QuestionItem >
-              <Question>Different Payment Methods ?</Question>
-              <Answer>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, aspernatur unde explicabo quas quibusdam eos.</Answer>
-              <Line ></Line>
-           </QuestionItem>
-
-           <QuestionItem >
-              <Question>How long I will wait ?</Question>
-              <Answer>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, aspernatur unde explicabo quas quibusdam eos.</Answer>
-              <Line ></Line>
-           </QuestionItem>
+        <AnimateSharedLayout>
+        <Questions layout>
+       {
+        questions.map((ques,i)=> <FaqComponent question={ques} key={ques+i} /> )
+       }
         </Questions>
+        </AnimateSharedLayout>
     </FaqSection>
   )
 }
 
 export default Faq
 
-const FaqSection = styled.div`
+const FaqSection = styled(motion.div)`
   padding: 8rem 0;
 `
-const Questions = styled.div`
+const Questions = styled(motion.div)`
   padding: 4rem 0;
   display: grid;
   grid-gap: 4rem;
-`
-const QuestionItem = styled.div`
-  display: grid;
-  grid-gap: 3rem;
-`
-const Question = styled.p`
-  font-size: 2rem ;
-  color:#fff;
-  cursor: pointer;
-`
-const Answer = styled.p`
-  font-size: 1.5rem;
-  color: gray;
-`
-const Line = styled.div`
-  width: 100%;
-  height:.2rem;
-  background-color: #fff;
 `

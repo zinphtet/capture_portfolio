@@ -4,32 +4,33 @@ import HomeOne from '../img/home1.png'
 import { Button } from '../globalStyle'
 import styled from 'styled-components'
 import { Img ,GreenText ,InfoTitle,Para} from '../globalStyle'
-import { titleAni ,container} from '../Animation'
+import { titleAni ,fade,zoomAni} from '../Animation'
 import { motion } from 'framer-motion'
+import Wave from './Wave'
 function AboutUs() {
+  
   return (
    <AboutUsWrapper >
-      <AboutInfo  >
-        <Infos>
+      <AboutInfo >
+      <Wave/>
+        <Infos >
               <InfoTitle
+              variants={titleAni}
               >We work to make</InfoTitle>
-              <InfoTitle>your <GreenText>dreams</GreenText> come</InfoTitle>
-              <InfoTitle>true</InfoTitle>
+              <InfoTitle   variants={titleAni}>your <GreenText>dreams</GreenText> come</InfoTitle>
+              <InfoTitle   variants={titleAni}>true</InfoTitle>
          </Infos>
-         <Para >
+         <Para variants={fade}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, ad eveniet. Commodi quidem obcaecati laudantium.
          </Para>
-         <Button 
-         initial = {{opacity : 0}}
-         animate ={{opacity : 1}}
-         transition = {{duration : 1}}
-         >
+         <Button variants={fade}>
           Contact Us
          </Button>
       </AboutInfo>
-      <InfoImg>
-        <ImgContainer>
-          <Img src={HomeOne} alt="Img for aboutus section" />
+      
+      <InfoImg >
+        <ImgContainer >
+          <Img variants={zoomAni}  src={HomeOne}  alt="Img for aboutus section" />
         </ImgContainer>
       </InfoImg>
    </AboutUsWrapper>
@@ -37,28 +38,30 @@ function AboutUs() {
 }
 
 export default AboutUs
-const InfoImg = styled.div`
+const InfoImg = styled(motion.div)`
     display: flex;
     align-items: center;
     justify-content: center;
 `
-const Infos = styled.div`
+const Infos = styled(motion.div)`
+ z-index : 2;
+ overflow : hidden;
 `
-const ImgContainer = styled.div`
+const ImgContainer = styled(motion.div)`
    max-width : 35rem;
-
+   z-index : 2;
+   overflow : hidden;
 `
 
 const AboutUsWrapper = styled(SectionWrapper)`
      display: flex;
      align-items: center;
      gap:2rem;
-     /* border: 2px solid red;  */
-     /* border: 2px solid red; */
+     position : relative;
+     overflow-y: hidden;
      padding: 6rem 0 8rem 0;
      &>*{
       flex: 1;
-      /* border: 1px solid blue; */
       
      }
      @media screen and (max-width : 56.25rem){

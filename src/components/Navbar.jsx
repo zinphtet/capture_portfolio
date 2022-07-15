@@ -45,9 +45,7 @@ const Nav = styled.div`
     padding: 1rem 0rem 1.5rem 0;
     display: flex;
     align-items: center;
-    /* border: 1px solid red; */
     gap: 1rem;
-    /* height: 10vh; */
    @media screen and (max-width : 37.5rem){
     flex-direction: column;
    }
@@ -59,15 +57,6 @@ const Brand  = styled.div`
         font-family: 'Lobster', sans-serif;
         font-size: 3rem;
         color: #fff;
-        @media screen and (max-width : 56.25rem){
-            color: red;
-      }
-      @media screen and (max-width : 37.5rem){
-            color: green;
-      }
-      @media screen and (max-width : 25rem){
-            color: blue;
-      }
     }
 `
 const NavLinks = styled(motion.div)`

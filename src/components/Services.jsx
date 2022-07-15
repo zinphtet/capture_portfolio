@@ -6,10 +6,11 @@ import clock from '../img/clock.svg'
 import money from '../img/money.svg'
 import teamwork from '../img/teamwork.svg'
 import styled from 'styled-components'
-
+import { scrollUpAni } from '../Animation'
+import {motion} from 'framer-motion'
 function Services() {
   return (
-    <ServiceSection>
+    <ServiceSection variants={scrollUpAni} initial='hidden' whileInView="show" viewport={{once:false,amount:.1}}>
        <div className="services">
           <p className="service_title">
                 <InfoTitle>High <GreenText>quality</GreenText> services</InfoTitle>
@@ -60,10 +61,11 @@ function Services() {
 
 export default Services
 
-const ServiceSection =styled.div`
+const ServiceSection =styled(motion.div)`
   padding: 8rem 0rem;
   display: flex;
   gap:2rem;
+ 
   &>*{
     flex: 1;
 
