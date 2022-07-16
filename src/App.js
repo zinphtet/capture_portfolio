@@ -16,7 +16,7 @@ function App() {
 		<AppWrapper>
 			<ScrollTop/>
 			<Navbar />
-			<AnimatePresence exitBeforeEnter initial={false}>
+			<AnimatePresence exitBeforeEnter >
 		 	 <Routes key={location.pathname} location={location}>
 				 <Route path='/' element={<About/>} />
 				 <Route path='/work' element={<Work/>} />
